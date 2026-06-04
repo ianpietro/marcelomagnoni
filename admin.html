@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Painel Administrativo | Marcelo Magnoni</title>
+    <meta name="robots" content="noindex, nofollow">
+    
+    <!-- CSS Stylesheet -->
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body class="admin-page">
+
+    <!-- Header Simples -->
+    <header style="position: relative;">
+        <div class="nav-container" style="padding: 1.5rem var(--spacing-md);">
+            <a href="index.html" class="logo">
+                M. MAGNONI
+                <span class="logo-sub">Voltar ao site principal</span>
+            </a>
+        </div>
+    </header>
+
+    <!-- Conteúdo Principal do Painel -->
+    <main class="admin-main">
+        
+        <!-- CARD DE AUTENTICAÇÃO (LOGIN) -->
+        <section class="card-luxury" id="login-container" style="display: block;">
+            <div class="card-luxury-header">
+                <span class="font-accent-tag">Acesso Restrito</span>
+                <h1 class="card-luxury-title">Identificação</h1>
+                <p class="card-luxury-subtitle">Autentique-se para gerenciar a sua agenda semanal.</p>
+            </div>
+            
+            <!-- Mensagens de Feedback do Login -->
+            <div id="feedback-login" class="feedback-msg"></div>
+            
+            <form id="login-form">
+                <div class="form-group">
+                    <label for="email">E-mail Corporativo</label>
+                    <input type="email" id="email" class="form-control" placeholder="exemplo@marcelomagnoni.com.br" required autocomplete="username">
+                </div>
+                
+                <div class="form-group" style="margin-bottom: var(--spacing-lg);">
+                    <label for="password">Senha de Segurança</label>
+                    <input type="password" id="password" class="form-control" placeholder="••••••••" required autocomplete="current-password">
+                </div>
+                
+                <button type="submit" class="btn-primary" style="width: 100%;" id="btn-login-submit">Acessar Painel</button>
+            </form>
+        </section>
+
+        <!-- CARD DO PAINEL ADMINISTRATIVO (DASHBOARD) -->
+        <section class="dashboard-container" id="dashboard-container" style="display: none;">
+            <div class="card-luxury" style="max-width: 100%;">
+                
+                <div class="dashboard-header">
+                    <div>
+                        <span class="font-accent-tag" style="margin-bottom: 0;">Painel de Controle</span>
+                        <h1 class="dashboard-title">Agenda Semanal</h1>
+                    </div>
+                    <button id="btn-logout" class="btn-logout">Sair do Painel</button>
+                </div>
+
+                <!-- Indicador de Status da Persistência -->
+                <div class="status-indicator">
+                    <span id="status-dot" class="status-dot"></span>
+                    <span id="status-text">Detectando conexão...</span>
+                </div>
+
+                <!-- Mensagens de Feedback da Dashboard -->
+                <div id="feedback-dashboard" class="feedback-msg"></div>
+
+                <form id="agenda-form">
+                    <div class="editor-grid">
+                        
+                        <!-- Segunda-feira -->
+                        <div class="editor-row">
+                            <span class="editor-day">Segunda-feira</span>
+                            <div>
+                                <label style="display:none;" for="segunda-local">Local Segunda</label>
+                                <input type="text" id="segunda-local" class="form-control" placeholder="Local de atendimento" required>
+                            </div>
+                            <div>
+                                <label style="display:none;" for="segunda-horario">Horário Segunda</label>
+                                <input type="text" id="segunda-horario" class="form-control" placeholder="Horário (ex: 09h às 19h)" required>
+                            </div>
+                        </div>
+
+                        <!-- Terça-feira -->
+                        <div class="editor-row">
+                            <span class="editor-day">Terça-feira</span>
+                            <div>
+                                <label style="display:none;" for="terca-local">Local Terça</label>
+                                <input type="text" id="terca-local" class="form-control" placeholder="Local de atendimento" required>
+                            </div>
+                            <div>
+                                <label style="display:none;" for="terca-horario">Horário Terça</label>
+                                <input type="text" id="terca-horario" class="form-control" placeholder="Horário" required>
+                            </div>
+                        </div>
+
+                        <!-- Quarta-feira -->
+                        <div class="editor-row">
+                            <span class="editor-day">Quarta-feira</span>
+                            <div>
+                                <label style="display:none;" for="quarta-local">Local Quarta</label>
+                                <input type="text" id="quarta-local" class="form-control" placeholder="Local de atendimento" required>
+                            </div>
+                            <div>
+                                <label style="display:none;" for="quarta-horario">Horário Quarta</label>
+                                <input type="text" id="quarta-horario" class="form-control" placeholder="Horário" required>
+                            </div>
+                        </div>
+
+                        <!-- Quinta-feira -->
+                        <div class="editor-row">
+                            <span class="editor-day">Quinta-feira</span>
+                            <div>
+                                <label style="display:none;" for="quinta-local">Local Quinta</label>
+                                <input type="text" id="quinta-local" class="form-control" placeholder="Local de atendimento" required>
+                            </div>
+                            <div>
+                                <label style="display:none;" for="quinta-horario">Horário Quinta</label>
+                                <input type="text" id="quinta-horario" class="form-control" placeholder="Horário" required>
+                            </div>
+                        </div>
+
+                        <!-- Sexta-feira -->
+                        <div class="editor-row">
+                            <span class="editor-day">Sexta-feira</span>
+                            <div>
+                                <label style="display:none;" for="sexta-local">Local Sexta</label>
+                                <input type="text" id="sexta-local" class="form-control" placeholder="Local de atendimento" required>
+                            </div>
+                            <div>
+                                <label style="display:none;" for="sexta-horario">Horário Sexta</label>
+                                <input type="text" id="sexta-horario" class="form-control" placeholder="Horário" required>
+                            </div>
+                        </div>
+
+                        <!-- Sábado -->
+                        <div class="editor-row">
+                            <span class="editor-day">Sábado</span>
+                            <div>
+                                <label style="display:none;" for="sabado-local">Local Sábado</label>
+                                <input type="text" id="sabado-local" class="form-control" placeholder="Local de atendimento" required>
+                            </div>
+                            <div>
+                                <label style="display:none;" for="sabado-horario">Horário Sábado</label>
+                                <input type="text" id="sabado-horario" class="form-control" placeholder="Horário" required>
+                            </div>
+                        </div>
+
+                        <!-- Domingo -->
+                        <div class="editor-row">
+                            <span class="editor-day">Domingo</span>
+                            <div>
+                                <label style="display:none;" for="domingo-local">Local Domingo</label>
+                                <input type="text" id="domingo-local" class="form-control" placeholder="Local de atendimento" required>
+                            </div>
+                            <div>
+                                <label style="display:none;" for="domingo-horario">Horário Domingo</label>
+                                <input type="text" id="domingo-horario" class="form-control" placeholder="Horário" required>
+                            </div>
+                        </div>
+
+                    </div>
+
+                    <div style="margin-top: var(--spacing-lg); text-align: right;">
+                        <button type="submit" class="btn-primary" id="btn-save-agenda">Salvar Alterações da Semana</button>
+                    </div>
+                </form>
+
+            </div>
+        </section>
+
+    </main>
+
+    <!-- Footer Simples -->
+    <footer style="padding: 2rem var(--spacing-md);">
+        <div class="footer-container" style="justify-content: center;">
+            <div class="footer-credits" style="text-align: center;">
+                © 2026 Marcelo Magnoni. Painel Administrativo de Acesso Exclusivo.
+            </div>
+        </div>
+    </footer>
+
+    <!-- Admin Script -->
+    <script type="module" src="js/admin.js"></script>
+</body>
+</html>
