@@ -6,169 +6,203 @@
     <title>Painel Administrativo | Marcelo Magnoni</title>
     <meta name="robots" content="noindex, nofollow">
     
-    <!-- CSS Stylesheet -->
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        bgPrimary: '#0a0a0a',
+                        bgSecondary: '#121212',
+                        bgTertiary: '#1a1a1a',
+                        accent: '#d4c4ae',
+                        accentHover: '#c5a880',
+                        textPrimary: '#f5f5f7',
+                        textSecondary: '#a1a1a6',
+                        textMuted: '#6e6e73',
+                        borderCustom: '#262626',
+                        borderCustomActive: '#404040',
+                    },
+                    fontFamily: {
+                        display: ['Cormorant Garamond', 'serif'],
+                        body: ['Inter', 'sans-serif'],
+                        accent: ['Syne', 'sans-serif'],
+                    }
+                }
+            }
+        }
+    </script>
+    
+    <!-- Custom CSS -->
     <link rel="stylesheet" href="css/style.css">
 </head>
-<body class="admin-page">
+<body class="bg-bgPrimary text-textPrimary font-body font-light min-h-screen flex flex-col justify-between overflow-x-hidden">
 
     <!-- Header Simples -->
-    <header style="position: relative;">
-        <div class="nav-container" style="padding: 1.5rem var(--spacing-md);">
-            <a href="index.html" class="logo">
-                M. MAGNONI
-                <span class="logo-sub">Voltar ao site principal</span>
+    <header class="relative border-b border-white/[0.03]">
+        <div class="max-w-[1400px] mx-auto px-6 py-5 flex justify-between items-center">
+            <a href="index.html" class="logo flex flex-col group">
+                <span class="font-display text-xl tracking-wider text-textPrimary transition-colors duration-300 group-hover:text-accent">M. MAGNONI</span>
+                <span class="text-[8px] uppercase tracking-[0.35em] text-textSecondary">Voltar ao site principal</span>
             </a>
         </div>
     </header>
 
     <!-- Conteúdo Principal do Painel -->
-    <main class="admin-main">
+    <main class="flex-grow flex items-center justify-center p-6 my-8">
         
         <!-- CARD DE AUTENTICAÇÃO (LOGIN) -->
-        <section class="card-luxury" id="login-container" style="display: block;">
-            <div class="card-luxury-header">
-                <span class="font-accent-tag">Acesso Restrito</span>
-                <h1 class="card-luxury-title">Identificação</h1>
-                <p class="card-luxury-subtitle">Autentique-se para gerenciar a sua agenda semanal.</p>
+        <section class="bg-bgSecondary border border-borderCustom w-full max-w-[500px] p-8 md:p-12 transition-all duration-300" id="login-container" style="display: block;">
+            <div class="text-center mb-10">
+                <span class="font-accent text-[10px] tracking-[0.2em] text-accent uppercase mb-2 block">Acesso Restrito</span>
+                <h1 class="font-display text-3xl md:text-4xl mb-2 text-textPrimary">Identificação</h1>
+                <p class="text-textSecondary text-xs font-light">Autentique-se para gerenciar a agenda semanal.</p>
             </div>
             
             <!-- Mensagens de Feedback do Login -->
-            <div id="feedback-login" class="feedback-msg"></div>
+            <div id="feedback-login" class="mb-6 p-4 text-sm hidden transition-all duration-300"></div>
             
-            <form id="login-form">
-                <div class="form-group">
-                    <label for="email">E-mail Corporativo</label>
-                    <input type="email" id="email" class="form-control" placeholder="exemplo@marcelomagnoni.com.br" required autocomplete="username">
+            <form id="login-form" class="flex flex-col gap-6">
+                <div class="flex flex-col gap-2">
+                    <label for="email" class="font-accent text-[10px] uppercase tracking-wider text-textSecondary">E-mail Corporativo</label>
+                    <input type="email" id="email" class="w-full bg-bgPrimary border border-borderCustom text-textPrimary px-4 py-3 font-light text-sm focus:outline-none focus:border-accent transition-colors duration-300" placeholder="exemplo@marcelomagnoni.com.br" required autocomplete="username">
                 </div>
                 
-                <div class="form-group" style="margin-bottom: var(--spacing-lg);">
-                    <label for="password">Senha de Segurança</label>
-                    <input type="password" id="password" class="form-control" placeholder="••••••••" required autocomplete="current-password">
+                <div class="flex flex-col gap-2">
+                    <label for="password" class="font-accent text-[10px] uppercase tracking-wider text-textSecondary">Senha de Segurança</label>
+                    <input type="password" id="password" class="w-full bg-bgPrimary border border-borderCustom text-textPrimary px-4 py-3 font-light text-sm focus:outline-none focus:border-accent transition-colors duration-300" placeholder="••••••••" required autocomplete="current-password">
                 </div>
                 
-                <button type="submit" class="btn-primary" style="width: 100%;" id="btn-login-submit">Acessar Painel</button>
+                <button type="submit" class="w-full border border-accent text-textPrimary py-4 uppercase font-accent text-[10px] tracking-wider transition-all duration-500 hover:bg-accent hover:text-bgPrimary cursor-pointer mt-4">
+                    Acessar Painel
+                </button>
             </form>
         </section>
 
         <!-- CARD DO PAINEL ADMINISTRATIVO (DASHBOARD) -->
-        <section class="dashboard-container" id="dashboard-container" style="display: none;">
-            <div class="card-luxury" style="max-width: 100%;">
+        <section class="w-full max-w-[800px] hidden transition-all duration-300" id="dashboard-container">
+            <div class="bg-bgSecondary border border-borderCustom p-6 md:p-10 w-full">
                 
-                <div class="dashboard-header">
+                <div class="flex justify-between items-center border-b border-borderCustom pb-6 mb-8">
                     <div>
-                        <span class="font-accent-tag" style="margin-bottom: 0;">Painel de Controle</span>
-                        <h1 class="dashboard-title">Agenda Semanal</h1>
+                        <span class="font-accent text-[9px] tracking-[0.2em] text-accent uppercase block mb-1">Painel de Controle</span>
+                        <h1 class="font-display text-2xl md:text-3xl text-textPrimary">Agenda Semanal</h1>
                     </div>
-                    <button id="btn-logout" class="btn-logout">Sair do Painel</button>
+                    <button id="btn-logout" class="text-textSecondary hover:text-accent font-accent text-[10px] uppercase tracking-widest border-b border-transparent hover:border-accent pb-1 transition-all duration-300">
+                        Sair do Painel
+                    </button>
                 </div>
 
                 <!-- Indicador de Status da Persistência -->
-                <div class="status-indicator">
-                    <span id="status-dot" class="status-dot"></span>
+                <div class="inline-flex items-center gap-3 text-xs text-textSecondary bg-bgPrimary border border-borderCustom px-4 py-2 mb-6">
+                    <span id="status-dot" class="w-2.5 h-2.5 rounded-full bg-textMuted"></span>
                     <span id="status-text">Detectando conexão...</span>
                 </div>
 
                 <!-- Mensagens de Feedback da Dashboard -->
-                <div id="feedback-dashboard" class="feedback-msg"></div>
+                <div id="feedback-dashboard" class="mb-6 p-4 text-sm hidden transition-all duration-300"></div>
 
-                <form id="agenda-form">
-                    <div class="editor-grid">
+                <form id="agenda-form" class="flex flex-col gap-4">
+                    <div class="flex flex-col gap-3">
                         
                         <!-- Segunda-feira -->
-                        <div class="editor-row">
-                            <span class="editor-day">Segunda-feira</span>
-                            <div>
+                        <div class="grid grid-cols-1 md:grid-cols-12 gap-3 items-center bg-bgPrimary border border-borderCustom p-4">
+                            <span class="md:col-span-3 font-accent text-xs uppercase tracking-wider text-textPrimary">Segunda-feira</span>
+                            <div class="md:col-span-5">
                                 <label style="display:none;" for="segunda-local">Local Segunda</label>
-                                <input type="text" id="segunda-local" class="form-control" placeholder="Local de atendimento" required>
+                                <input type="text" id="segunda-local" class="w-full bg-bgSecondary border border-borderCustom text-textPrimary px-3 py-2 text-sm focus:outline-none focus:border-accent font-light" placeholder="Local de atendimento" required>
                             </div>
-                            <div>
+                            <div class="md:col-span-4">
                                 <label style="display:none;" for="segunda-horario">Horário Segunda</label>
-                                <input type="text" id="segunda-horario" class="form-control" placeholder="Horário (ex: 09h às 19h)" required>
+                                <input type="text" id="segunda-horario" class="w-full bg-bgSecondary border border-borderCustom text-textPrimary px-3 py-2 text-sm focus:outline-none focus:border-accent font-light" placeholder="Horário (ex: 09h às 19h)" required>
                             </div>
                         </div>
 
                         <!-- Terça-feira -->
-                        <div class="editor-row">
-                            <span class="editor-day">Terça-feira</span>
-                            <div>
+                        <div class="grid grid-cols-1 md:grid-cols-12 gap-3 items-center bg-bgPrimary border border-borderCustom p-4">
+                            <span class="md:col-span-3 font-accent text-xs uppercase tracking-wider text-textPrimary">Terça-feira</span>
+                            <div class="md:col-span-5">
                                 <label style="display:none;" for="terca-local">Local Terça</label>
-                                <input type="text" id="terca-local" class="form-control" placeholder="Local de atendimento" required>
+                                <input type="text" id="terca-local" class="w-full bg-bgSecondary border border-borderCustom text-textPrimary px-3 py-2 text-sm focus:outline-none focus:border-accent font-light" placeholder="Local de atendimento" required>
                             </div>
-                            <div>
+                            <div class="md:col-span-4">
                                 <label style="display:none;" for="terca-horario">Horário Terça</label>
-                                <input type="text" id="terca-horario" class="form-control" placeholder="Horário" required>
+                                <input type="text" id="terca-horario" class="w-full bg-bgSecondary border border-borderCustom text-textPrimary px-3 py-2 text-sm focus:outline-none focus:border-accent font-light" placeholder="Horário" required>
                             </div>
                         </div>
 
                         <!-- Quarta-feira -->
-                        <div class="editor-row">
-                            <span class="editor-day">Quarta-feira</span>
-                            <div>
+                        <div class="grid grid-cols-1 md:grid-cols-12 gap-3 items-center bg-bgPrimary border border-borderCustom p-4">
+                            <span class="md:col-span-3 font-accent text-xs uppercase tracking-wider text-textPrimary">Quarta-feira</span>
+                            <div class="md:col-span-5">
                                 <label style="display:none;" for="quarta-local">Local Quarta</label>
-                                <input type="text" id="quarta-local" class="form-control" placeholder="Local de atendimento" required>
+                                <input type="text" id="quarta-local" class="w-full bg-bgSecondary border border-borderCustom text-textPrimary px-3 py-2 text-sm focus:outline-none focus:border-accent font-light" placeholder="Local de atendimento" required>
                             </div>
-                            <div>
+                            <div class="md:col-span-4">
                                 <label style="display:none;" for="quarta-horario">Horário Quarta</label>
-                                <input type="text" id="quarta-horario" class="form-control" placeholder="Horário" required>
+                                <input type="text" id="quarta-horario" class="w-full bg-bgSecondary border border-borderCustom text-textPrimary px-3 py-2 text-sm focus:outline-none focus:border-accent font-light" placeholder="Horário" required>
                             </div>
                         </div>
 
                         <!-- Quinta-feira -->
-                        <div class="editor-row">
-                            <span class="editor-day">Quinta-feira</span>
-                            <div>
+                        <div class="grid grid-cols-1 md:grid-cols-12 gap-3 items-center bg-bgPrimary border border-borderCustom p-4">
+                            <span class="md:col-span-3 font-accent text-xs uppercase tracking-wider text-textPrimary">Quinta-feira</span>
+                            <div class="md:col-span-5">
                                 <label style="display:none;" for="quinta-local">Local Quinta</label>
-                                <input type="text" id="quinta-local" class="form-control" placeholder="Local de atendimento" required>
+                                <input type="text" id="quinta-local" class="w-full bg-bgSecondary border border-borderCustom text-textPrimary px-3 py-2 text-sm focus:outline-none focus:border-accent font-light" placeholder="Local de atendimento" required>
                             </div>
-                            <div>
+                            <div class="md:col-span-4">
                                 <label style="display:none;" for="quinta-horario">Horário Quinta</label>
-                                <input type="text" id="quinta-horario" class="form-control" placeholder="Horário" required>
+                                <input type="text" id="quinta-horario" class="w-full bg-bgSecondary border border-borderCustom text-textPrimary px-3 py-2 text-sm focus:outline-none focus:border-accent font-light" placeholder="Horário" required>
                             </div>
                         </div>
 
                         <!-- Sexta-feira -->
-                        <div class="editor-row">
-                            <span class="editor-day">Sexta-feira</span>
-                            <div>
+                        <div class="grid grid-cols-1 md:grid-cols-12 gap-3 items-center bg-bgPrimary border border-borderCustom p-4">
+                            <span class="md:col-span-3 font-accent text-xs uppercase tracking-wider text-textPrimary">Sexta-feira</span>
+                            <div class="md:col-span-5">
                                 <label style="display:none;" for="sexta-local">Local Sexta</label>
-                                <input type="text" id="sexta-local" class="form-control" placeholder="Local de atendimento" required>
+                                <input type="text" id="sexta-local" class="w-full bg-bgSecondary border border-borderCustom text-textPrimary px-3 py-2 text-sm focus:outline-none focus:border-accent font-light" placeholder="Local de atendimento" required>
                             </div>
-                            <div>
+                            <div class="md:col-span-4">
                                 <label style="display:none;" for="sexta-horario">Horário Sexta</label>
-                                <input type="text" id="sexta-horario" class="form-control" placeholder="Horário" required>
+                                <input type="text" id="sexta-horario" class="w-full bg-bgSecondary border border-borderCustom text-textPrimary px-3 py-2 text-sm focus:outline-none focus:border-accent font-light" placeholder="Horário" required>
                             </div>
                         </div>
 
                         <!-- Sábado -->
-                        <div class="editor-row">
-                            <span class="editor-day">Sábado</span>
-                            <div>
+                        <div class="grid grid-cols-1 md:grid-cols-12 gap-3 items-center bg-bgPrimary border border-borderCustom p-4">
+                            <span class="md:col-span-3 font-accent text-xs uppercase tracking-wider text-textPrimary">Sábado</span>
+                            <div class="md:col-span-5">
                                 <label style="display:none;" for="sabado-local">Local Sábado</label>
-                                <input type="text" id="sabado-local" class="form-control" placeholder="Local de atendimento" required>
+                                <input type="text" id="sabado-local" class="w-full bg-bgSecondary border border-borderCustom text-textPrimary px-3 py-2 text-sm focus:outline-none focus:border-accent font-light" placeholder="Local de atendimento" required>
                             </div>
-                            <div>
+                            <div class="md:col-span-4">
                                 <label style="display:none;" for="sabado-horario">Horário Sábado</label>
-                                <input type="text" id="sabado-horario" class="form-control" placeholder="Horário" required>
+                                <input type="text" id="sabado-horario" class="w-full bg-bgSecondary border border-borderCustom text-textPrimary px-3 py-2 text-sm focus:outline-none focus:border-accent font-light" placeholder="Horário" required>
                             </div>
                         </div>
 
                         <!-- Domingo -->
-                        <div class="editor-row">
-                            <span class="editor-day">Domingo</span>
-                            <div>
+                        <div class="grid grid-cols-1 md:grid-cols-12 gap-3 items-center bg-bgPrimary border border-borderCustom p-4">
+                            <span class="md:col-span-3 font-accent text-xs uppercase tracking-wider text-textPrimary">Domingo</span>
+                            <div class="md:col-span-5">
                                 <label style="display:none;" for="domingo-local">Local Domingo</label>
-                                <input type="text" id="domingo-local" class="form-control" placeholder="Local de atendimento" required>
+                                <input type="text" id="domingo-local" class="w-full bg-bgSecondary border border-borderCustom text-textPrimary px-3 py-2 text-sm focus:outline-none focus:border-accent font-light" placeholder="Local de atendimento" required>
                             </div>
-                            <div>
+                            <div class="md:col-span-4">
                                 <label style="display:none;" for="domingo-horario">Horário Domingo</label>
-                                <input type="text" id="domingo-horario" class="form-control" placeholder="Horário" required>
+                                <input type="text" id="domingo-horario" class="w-full bg-bgSecondary border border-borderCustom text-textPrimary px-3 py-2 text-sm focus:outline-none focus:border-accent font-light" placeholder="Horário" required>
                             </div>
                         </div>
 
                     </div>
 
-                    <div style="margin-top: var(--spacing-lg); text-align: right;">
-                        <button type="submit" class="btn-primary" id="btn-save-agenda">Salvar Alterações da Semana</button>
+                    <div class="mt-8 text-right">
+                        <button type="submit" class="border border-accent text-textPrimary px-8 py-4 uppercase font-accent text-[10px] tracking-wider transition-all duration-500 hover:bg-accent hover:text-bgPrimary cursor-pointer">
+                            Salvar Alterações da Semana
+                        </button>
                     </div>
                 </form>
 
@@ -178,11 +212,9 @@
     </main>
 
     <!-- Footer Simples -->
-    <footer style="padding: 2rem var(--spacing-md);">
-        <div class="footer-container" style="justify-content: center;">
-            <div class="footer-credits" style="text-align: center;">
-                © 2026 Marcelo Magnoni. Painel Administrativo de Acesso Exclusivo.
-            </div>
+    <footer class="py-8 px-6 border-t border-white/[0.03]">
+        <div class="max-w-[1200px] mx-auto text-center text-[10px] text-textMuted uppercase tracking-wider">
+            © 2026 Marcelo Magnoni. Painel Administrativo de Acesso Exclusivo.
         </div>
     </footer>
 

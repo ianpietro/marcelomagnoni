@@ -123,10 +123,10 @@ document.addEventListener('DOMContentLoaded', () => {
 function atualizarIndicadorStatus() {
     if (statusDot && statusText) {
         if (isLocalMode()) {
-            statusDot.className = 'status-dot local';
+            statusDot.className = 'w-2.5 h-2.5 rounded-full bg-blue-500 shadow-[0_0_8px_rgba(59,130,246,0.6)]';
             statusText.textContent = 'Modo de Homologação Local (LocalStorage)';
         } else {
-            statusDot.className = 'status-dot firebase';
+            statusDot.className = 'w-2.5 h-2.5 rounded-full bg-emerald-500 shadow-[0_0_8px_rgba(16,185,129,0.6)]';
             statusText.textContent = 'Conectado ao Firebase Cloud';
         }
     }
@@ -178,8 +178,15 @@ async function exibirDashboard() {
 function exibirFeedback(elemento, mensagem, tipo) {
     if (!elemento) return;
     elemento.textContent = mensagem;
-    elemento.className = `feedback-msg ${tipo}`;
-    elemento.style.display = 'block';
+    
+    // Reseta classes do elemento e define de acordo com o tipo
+    elemento.className = 'mb-6 p-4 text-sm font-light border transition-all duration-300 block';
+    
+    if (tipo === 'success') {
+        elemento.classList.add('bg-emerald-500/10', 'border-emerald-500', 'text-emerald-500');
+    } else {
+        elemento.classList.add('bg-red-500/10', 'border-red-500', 'text-red-500');
+    }
 }
 
 /**
@@ -189,8 +196,7 @@ function limparFeedbacks() {
     [feedbackLogin, feedbackDashboard].forEach(el => {
         if (el) {
             el.textContent = '';
-            el.className = 'feedback-msg';
-            el.style.display = 'none';
+            el.className = 'hidden';
         }
     });
 }

@@ -3,32 +3,61 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Marcelo Magnoni | Visagismo & Alfaiataria Capilar em Niterói</title>
+    <title>Marcelo Magnoni | Visagismo & Design Capilar em Niterói</title>
     <meta name="description" content="Estúdio de design capilar unissex sob comando de Marcelo Magnoni. Especialista em visagismo científico, colorimetria de precisão e transformações estéticas de alto padrão em Niterói, RJ.">
     
     <!-- Open Graph / Meta de compartilhamento -->
-    <meta property="og:title" content="Marcelo Magnoni | Visagismo & Alfaiataria Capilar">
+    <meta property="og:title" content="Marcelo Magnoni | Visagismo & Design Capilar">
     <meta property="og:description" content="Design de imagem personalizado e cortes sob medida. Conheça a precisão do visagismo científico.">
     <meta property="og:image" content="images/hero-bg.png">
     
-    <!-- CSS Stylesheet -->
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        bgPrimary: '#0a0a0a',
+                        bgSecondary: '#121212',
+                        bgTertiary: '#1a1a1a',
+                        accent: '#d4c4ae',
+                        accentHover: '#c5a880',
+                        textPrimary: '#f5f5f7',
+                        textSecondary: '#a1a1a6',
+                        textMuted: '#6e6e73',
+                        borderCustom: '#262626',
+                        borderCustomActive: '#404040',
+                    },
+                    fontFamily: {
+                        display: ['Cormorant Garamond', 'serif'],
+                        body: ['Inter', 'sans-serif'],
+                        accent: ['Syne', 'sans-serif'],
+                    }
+                }
+            }
+        }
+    </script>
+    
+    <!-- Custom CSS (Keep fonts and transitions) -->
     <link rel="stylesheet" href="css/style.css">
 </head>
-<body>
+<body class="bg-bgPrimary text-textPrimary font-body font-light overflow-x-hidden leading-relaxed">
 
     <!-- Header / Navegação -->
-    <header>
-        <div class="nav-container">
-            <a href="#" class="logo" id="header-logo">
-                M. MAGNONI
-                <span class="logo-sub">Visagismo & Design Capilar</span>
+    <header class="absolute top-0 left-0 w-full z-40 border-b border-white/[0.03]">
+        <div class="max-w-[1400px] mx-auto px-6 py-6 flex justify-between items-center">
+            <a href="#" class="logo flex flex-col group">
+                <span class="font-display text-2xl tracking-wider text-textPrimary transition-colors duration-300 group-hover:text-accent">M. MAGNONI</span>
+                <span class="text-[9px] uppercase tracking-[0.35em] text-textSecondary">Visagismo & Design Capilar</span>
             </a>
-            <nav class="nav-menu">
-                <a href="#filosofia">Filosofia</a>
-                <a href="#especialidades">Assinatura</a>
-                <a href="#agenda">Agenda</a>
-                <a href="#retratos">Retratos</a>
-                <a href="#reserva" class="btn-secondary" style="border-bottom: none; color: var(--color-accent);">Agendar</a>
+            <nav class="hidden md:flex gap-8 items-center font-accent text-[11px] uppercase tracking-[0.15em] text-textSecondary">
+                <a href="#filosofia" class="hover:text-accent transition-colors duration-300">Filosofia</a>
+                <a href="#assinatura" class="hover:text-accent transition-colors duration-300">Assinatura</a>
+                <a href="#experiencias" class="hover:text-accent transition-colors duration-300">Depoimentos</a>
+                <a href="#agenda" class="hover:text-accent transition-colors duration-300">Agenda</a>
+                <a href="#perguntas" class="hover:text-accent transition-colors duration-300">FAQ</a>
+                <a href="#reserva" class="border border-accent text-accent px-5 py-2 hover:bg-accent hover:text-bgPrimary transition-all duration-500">Agendar</a>
             </nav>
         </div>
     </header>
@@ -36,163 +65,230 @@
     <main>
         
         <!-- Hero Section -->
-        <section class="hero" id="inicio">
-            <div class="hero-grid">
-                <div class="hero-content fade-in-section">
-                    <span class="font-accent-tag">Alfaiataria Capilar</span>
-                    <h1 class="hero-title">
+        <section class="hero min-h-screen flex items-center relative overflow-hidden bg-bgPrimary" id="inicio">
+            <div class="grid grid-cols-1 lg:grid-cols-5 w-full h-full min-h-screen">
+                
+                <!-- Conteúdo -->
+                <div class="lg:col-span-3 flex flex-col justify-center px-6 md:px-16 lg:px-24 xl:px-32 max-w-[800px] z-10 pt-[140px] pb-16 fade-in-section">
+                    <span class="font-accent text-xs tracking-[0.2em] text-accent uppercase mb-4 block">Estúdio de Visagismo</span>
+                    <h1 class="font-display text-4xl md:text-5xl lg:text-7xl leading-[1.1] mb-6 text-textPrimary">
                         A precisão da geometria.<br>
-                        A expressão da sua <span class="text-accent">identidade</span>.
+                        A expressão da sua <span class="text-accent italic font-normal">identidade</span>.
                     </h1>
-                    <p class="hero-desc">
+                    <p class="text-textSecondary text-base md:text-lg max-w-[500px] mb-8 font-light leading-relaxed">
                         Marcelo Magnoni une sensibilidade estética e alta performance em visagismo científico, desenhando cortes e transformações unissex de alto padrão em Niterói.
                     </p>
                     <div>
-                        <a href="#reserva" class="btn-primary" id="hero-cta-btn">Agendar Consultoria Visual</a>
+                        <a href="#reserva" class="inline-flex items-center justify-center border border-accent text-textPrimary px-8 py-4 uppercase font-accent text-[11px] tracking-[0.15em] transition-all duration-500 hover:bg-accent hover:text-bgPrimary hover:border-accentHover cursor-pointer">
+                            Agendar Consultoria Visual
+                        </a>
                     </div>
                 </div>
-                <div class="hero-image-container">
-                    <img src="images/hero-bg.png" alt="Geometric avant-garde hair design - Marcelo Magnoni" class="hero-image" loading="eager">
-                    <div class="hero-image-overlay"></div>
+                
+                <!-- Imagem -->
+                <div class="lg:col-span-2 relative h-[50vh] lg:h-full w-full bg-bgSecondary min-h-[400px] lg:min-h-screen">
+                    <img src="images/hero-bg.png" alt="Geometric haircut styled by Marcelo Magnoni" class="hero-image w-full h-full object-cover filter brightness-[0.75] contrast-[1.05] transition-transform duration-700 ease-out" loading="eager">
+                    <div class="absolute inset-0 bg-gradient-to-t lg:bg-gradient-to-r from-bgPrimary via-bgPrimary/20 to-transparent pointer-events-none"></div>
                 </div>
             </div>
         </section>
 
         <!-- Manifesto / Filosofia -->
-        <section class="manifesto section-container fade-in-section" id="filosofia">
-            <div class="manifesto-grid">
-                <h2 class="manifesto-title">
-                    Cada corte é um projeto de <span class="text-accent">design</span> individual.
-                </h2>
-                <div class="manifesto-text">
-                    <p>
-                        A cadeira de Marcelo Magnoni não é um espaço para tendências passageiras ou padronizações comerciais.
-                    </p>
-                    <p>
-                        Aqui, o design capilar é tratado sob a ótica do visagismo científico. Analisamos a estrutura geométrica do rosto, os traços de personalidade e o estilo de vida de cada indivíduo. A tesoura esculpe formas para valorizar quem você é por inteiro.
-                    </p>
-                    <p>
-                        Seja em transformações sutis ou em mudanças radicais de tom e forma, o compromisso está no equilíbrio estético absoluto e na preservação da integridade biológica do fio.
-                    </p>
-                    <div style="margin-top: var(--spacing-md);">
-                        <a href="#reserva" class="btn-secondary" id="manifesto-read-more">Conheça a Experiência</a>
+        <section class="manifesto bg-bgSecondary border-y border-borderCustom" id="filosofia">
+            <div class="max-w-[1200px] mx-auto px-6 py-24 md:py-32 fade-in-section">
+                <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-start">
+                    <h2 class="lg:col-span-5 font-display text-4xl md:text-5xl leading-[1.1] text-textPrimary">
+                        Cada corte é um projeto de <span class="text-accent italic font-normal">design</span> individual.
+                    </h2>
+                    <div class="lg:col-span-7 flex flex-col gap-6 text-textSecondary text-base md:text-lg font-light leading-relaxed">
+                        <p class="font-display text-xl md:text-2xl text-textPrimary italic leading-relaxed font-normal">
+                            A cadeira de Marcelo Magnoni não é um espaço para tendências passageiras ou padronizações comerciais.
+                        </p>
+                        <p>
+                            Aqui, o design capilar é tratado sob a ótica do visagismo científico. Analisamos a estrutura geométrica do rosto, os traços de personalidade e o estilo de vida de cada indivíduo. A tesoura esculpe formas para valorizar quem você é por inteiro.
+                        </p>
+                        <p>
+                            Seja em transformações sutis ou em mudanças radicais de tom e forma, o compromisso está no equilíbrio estético absoluto e na preservação da integridade biológica do fio.
+                        </p>
+                        <div class="mt-4">
+                            <a href="#reserva" class="inline-flex items-center font-accent text-xs uppercase tracking-[0.15em] text-textPrimary border-b border-accent pb-1 hover:text-accent hover:pl-2 transition-all duration-300">
+                                Conheça a Experiência
+                            </a>
+                        </div>
                     </div>
                 </div>
             </div>
         </section>
 
-        <!-- Especialidades / Assinatura -->
-        <section class="especialidades section-container fade-in-section" id="especialidades">
-            <div class="section-header">
-                <span class="font-accent-tag">O Menu de Assinatura</span>
-                <h2>Especialidades de <span class="text-accent">Alta Performance</span></h2>
+        <!-- Especialidades / Assinatura (Sem preços) -->
+        <section class="especialidades max-w-[1200px] mx-auto px-6 py-24 md:py-32" id="assinatura">
+            <div class="max-w-[600px] mb-16 fade-in-section">
+                <span class="font-accent text-xs tracking-[0.2em] text-accent uppercase mb-2 block">O Menu de Assinatura</span>
+                <h2 class="font-display text-4xl md:text-5xl leading-tight">Especialidades de <span class="text-accent italic font-normal">Alta Performance</span></h2>
             </div>
             
-            <div class="spec-grid">
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8 fade-in-section">
                 <!-- Especialidade 1 -->
-                <article class="spec-card">
-                    <span class="spec-num">I // GEOMETRIA DE CORTE</span>
-                    <h3 class="spec-card-title">Corte & Visagismo Unissex</h3>
-                    <p class="spec-desc">
-                        Desenho arquitetônico de linhas e texturas planejado exclusivamente para harmonizar sua estrutura facial com seu posicionamento pessoal.
+                <article class="bg-bgSecondary border border-borderCustom p-8 md:p-10 relative overflow-hidden group hover:border-borderCustomActive transition-all duration-500 hover:-translate-y-1">
+                    <div class="absolute top-0 left-0 w-full h-[2px] bg-accent scale-x-0 group-hover:scale-x-100 origin-left transition-transform duration-500"></div>
+                    <span class="font-accent text-[10px] text-textMuted tracking-[0.15em] mb-8 block">I // GEOMETRIA DE CORTE</span>
+                    <h3 class="font-display text-2xl mb-4 text-textPrimary">Corte & Visagismo Unissex</h3>
+                    <p class="text-textSecondary text-sm md:text-base font-light mb-6">
+                        Desenho de linhas e texturas planejado exclusivamente para harmonizar sua estrutura facial com seu estilo pessoal.
                     </p>
+                    <span class="font-accent text-[10px] text-accent tracking-wider uppercase">Sessão de 60 min</span>
                 </article>
 
                 <!-- Especialidade 2 -->
-                <article class="spec-card">
-                    <span class="spec-num">II // COLORIMETRIA CIENTÍFICA</span>
-                    <h3 class="spec-card-title">Iluminação & Tons Personalizados</h3>
-                    <p class="spec-desc">
-                        Criação de contrastes e cores sofisticadas desenvolvidas através de análise cromática individualizada, garantindo saúde e brilho extremo à fibra.
+                <article class="bg-bgSecondary border border-borderCustom p-8 md:p-10 relative overflow-hidden group hover:border-borderCustomActive transition-all duration-500 hover:-translate-y-1">
+                    <div class="absolute top-0 left-0 w-full h-[2px] bg-accent scale-x-0 group-hover:scale-x-100 origin-left transition-transform duration-500"></div>
+                    <span class="font-accent text-[10px] text-textMuted tracking-[0.15em] mb-8 block">II // COLORIMETRIA CIENTÍFICA</span>
+                    <h3 class="font-display text-2xl mb-4 text-textPrimary">Iluminação & Tons</h3>
+                    <p class="text-textSecondary text-sm md:text-base font-light mb-6">
+                        Criação de contrastes e cores sofisticadas desenvolvidas através de análise cromática individualizada, mantendo a saúde do fio.
                     </p>
+                    <span class="font-accent text-[10px] text-accent tracking-wider uppercase">Duração sob consulta</span>
                 </article>
 
                 <!-- Especialidade 3 -->
-                <article class="spec-card">
-                    <span class="spec-num">III // TRATAMENTOS ESTRUTURAIS</span>
-                    <h3 class="spec-card-title">Reconstrução & Terapia Capilar</h3>
-                    <p class="spec-desc">
-                        Cronogramas e reposição lipídica profunda com biotecnologia capilar ativa, recuperando fios desgastados e selando as cutículas com perfeição.
+                <article class="bg-bgSecondary border border-borderCustom p-8 md:p-10 relative overflow-hidden group hover:border-borderCustomActive transition-all duration-500 hover:-translate-y-1">
+                    <div class="absolute top-0 left-0 w-full h-[2px] bg-accent scale-x-0 group-hover:scale-x-100 origin-left transition-transform duration-500"></div>
+                    <span class="font-accent text-[10px] text-textMuted tracking-[0.15em] mb-8 block">III // TERAPIA CAPILAR</span>
+                    <h3 class="font-display text-2xl mb-4 text-textPrimary">Tratamentos Estruturais</h3>
+                    <p class="text-textSecondary text-sm md:text-base font-light mb-6">
+                        Recuperação lipídica e reconstrução profunda com biotecnologia capilar avançada, blindando as cutículas.
                     </p>
+                    <span class="font-accent text-[10px] text-accent tracking-wider uppercase">Sessão de 45 min</span>
                 </article>
+            </div>
+        </section>
+
+        <!-- Depoimentos de Luxo (Prova Social) -->
+        <section class="bg-bgSecondary border-y border-borderCustom" id="experiencias">
+            <div class="max-w-[1200px] mx-auto px-6 py-24 md:py-32 fade-in-section">
+                <div class="max-w-[600px] mb-16">
+                    <span class="font-accent text-xs tracking-[0.2em] text-accent uppercase mb-2 block">Relatos Reais</span>
+                    <h2 class="font-display text-4xl md:text-5xl leading-tight">A Experiência de <span class="text-accent italic font-normal">Nossos Clientes</span></h2>
+                </div>
+
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                    <!-- Depoimento 1 -->
+                    <blockquote class="bg-bgPrimary border border-borderCustom p-8 relative flex flex-col justify-between group hover:border-borderCustomActive transition-colors duration-300">
+                        <span class="font-display text-7xl text-accent/10 absolute top-4 left-4 pointer-events-none font-normal">“</span>
+                        <p class="text-textSecondary text-base font-light italic leading-relaxed mb-8 relative z-10">
+                            O trabalho de visagismo do Marcelo transformou completamente minha imagem profissional. O corte geométrico trouxe a força e a sofisticação que eu precisava transmitir no meu dia a dia como advogada.
+                        </p>
+                        <div>
+                            <cite class="not-italic font-accent text-xs text-textPrimary block tracking-widest uppercase">Mariana Santoro</cite>
+                            <span class="text-[10px] text-textMuted uppercase tracking-wider">Advogada Corporativa</span>
+                        </div>
+                    </blockquote>
+
+                    <!-- Depoimento 2 -->
+                    <blockquote class="bg-bgPrimary border border-borderCustom p-8 relative flex flex-col justify-between group hover:border-borderCustomActive transition-colors duration-300">
+                        <span class="font-display text-7xl text-accent/10 absolute top-4 left-4 pointer-events-none font-normal">“</span>
+                        <p class="text-textSecondary text-base font-light italic leading-relaxed mb-8 relative z-10">
+                            Encontrar um profissional que entende a harmonia entre o corte de cabelo e o design da barba baseado na estrutura do rosto é raro. O atendimento privado dele em Niterói é impecável e único.
+                        </p>
+                        <div>
+                            <cite class="not-italic font-accent text-xs text-textPrimary block tracking-widest uppercase">Rodrigo Malta</cite>
+                            <span class="text-[10px] text-textMuted uppercase tracking-wider">Empresário</span>
+                        </div>
+                    </blockquote>
+
+                    <!-- Depoimento 3 -->
+                    <blockquote class="bg-bgPrimary border border-borderCustom p-8 relative flex flex-col justify-between group hover:border-borderCustomActive transition-colors duration-300">
+                        <span class="font-display text-7xl text-accent/10 absolute top-4 left-4 pointer-events-none font-normal">“</span>
+                        <p class="text-textSecondary text-base font-light italic leading-relaxed mb-8 relative z-10">
+                            A colorimetria do Marcelo é matemática combinada com arte. Meu cabelo nunca esteve tão saudável e o tom champagne que ele desenhou ficou extremamente sofisticado e natural.
+                        </p>
+                        <div>
+                            <cite class="not-italic font-accent text-xs text-textPrimary block tracking-widest uppercase">Beatriz Lemos</cite>
+                            <span class="text-[10px] text-textMuted uppercase tracking-wider">Arquiteta</span>
+                        </div>
+                    </blockquote>
+                </div>
             </div>
         </section>
 
         <!-- Agenda da Semana (Dinâmica) -->
-        <section class="agenda section-container fade-in-section" id="agenda">
-            <div class="agenda-layout">
-                <div class="agenda-text">
-                    <span class="font-accent-tag">Logística de Atendimento</span>
-                    <h3>Agenda da <span class="text-accent">Semana</span></h3>
-                    <p>
-                        Abaixo, acompanhe os locais de atuação e disponibilidade de Marcelo. Os agendamentos são estritamente exclusivos e com hora marcada para garantir dedicação integral.
+        <section class="agenda max-w-[1200px] mx-auto px-6 py-24 md:py-32" id="agenda">
+            <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-start fade-in-section">
+                
+                <div class="lg:col-span-5">
+                    <span class="font-accent text-xs tracking-[0.2em] text-accent uppercase mb-2 block">Logística de Atendimento</span>
+                    <h3 class="font-display text-4xl md:text-5xl leading-tight mb-4">Agenda da <span class="text-accent italic font-normal">Semana</span></h3>
+                    <p class="text-textSecondary text-base md:text-lg font-light leading-relaxed mb-8">
+                        Acompanhe os locais de atuação e a disponibilidade de Marcelo. Os atendimentos são individuais e com hora marcada para garantir dedicação integral à sua imagem.
                     </p>
-                    <div style="margin-top: var(--spacing-md);">
-                        <a href="https://wa.me/5521996600403" target="_blank" rel="noopener" class="btn-primary" id="agenda-reservar-whatsapp">Consultar Horários Disponíveis</a>
+                    <div>
+                        <a href="https://wa.me/5521996600403" target="_blank" rel="noopener" class="inline-flex items-center justify-center border border-accent text-textPrimary px-6 py-3.5 uppercase font-accent text-[10px] tracking-[0.15em] transition-all duration-500 hover:bg-accent hover:text-bgPrimary">
+                            Consultar Horários Disponíveis
+                        </a>
                     </div>
                 </div>
                 
-                <div class="agenda-cards-container">
+                <div class="lg:col-span-7 w-full flex flex-col gap-3">
                     <!-- Segunda -->
-                    <div class="agenda-row">
-                        <div class="agenda-day">Segunda-feira</div>
-                        <div class="agenda-details">
-                            <span class="agenda-location" id="agenda-segunda-local">Carregando...</span>
-                            <span class="agenda-time" id="agenda-segunda-horario">—</span>
+                    <div class="grid grid-cols-1 sm:grid-cols-12 items-center p-4 bg-bgSecondary border border-borderCustom hover:border-borderCustomActive transition-colors duration-300">
+                        <div class="sm:col-span-4 font-accent text-xs uppercase tracking-widest text-textPrimary mb-2 sm:mb-0">Segunda-feira</div>
+                        <div class="sm:col-span-8 flex justify-between items-center gap-4">
+                            <span class="font-normal text-accent text-sm md:text-base" id="agenda-segunda-local">Carregando...</span>
+                            <span class="text-textSecondary text-xs" id="agenda-segunda-horario">—</span>
                         </div>
                     </div>
                     
                     <!-- Terça -->
-                    <div class="agenda-row">
-                        <div class="agenda-day">Terça-feira</div>
-                        <div class="agenda-details">
-                            <span class="agenda-location" id="agenda-terca-local">Carregando...</span>
-                            <span class="agenda-time" id="agenda-terca-horario">—</span>
+                    <div class="grid grid-cols-1 sm:grid-cols-12 items-center p-4 bg-bgSecondary border border-borderCustom hover:border-borderCustomActive transition-colors duration-300">
+                        <div class="sm:col-span-4 font-accent text-xs uppercase tracking-widest text-textPrimary mb-2 sm:mb-0">Terça-feira</div>
+                        <div class="sm:col-span-8 flex justify-between items-center gap-4">
+                            <span class="font-normal text-accent text-sm md:text-base" id="agenda-terca-local">Carregando...</span>
+                            <span class="text-textSecondary text-xs" id="agenda-terca-horario">—</span>
                         </div>
                     </div>
                     
                     <!-- Quarta -->
-                    <div class="agenda-row">
-                        <div class="agenda-day">Quarta-feira</div>
-                        <div class="agenda-details">
-                            <span class="agenda-location" id="agenda-quarta-local">Carregando...</span>
-                            <span class="agenda-time" id="agenda-quarta-horario">—</span>
+                    <div class="grid grid-cols-1 sm:grid-cols-12 items-center p-4 bg-bgSecondary border border-borderCustom hover:border-borderCustomActive transition-colors duration-300">
+                        <div class="sm:col-span-4 font-accent text-xs uppercase tracking-widest text-textPrimary mb-2 sm:mb-0">Quarta-feira</div>
+                        <div class="sm:col-span-8 flex justify-between items-center gap-4">
+                            <span class="font-normal text-accent text-sm md:text-base" id="agenda-quarta-local">Carregando...</span>
+                            <span class="text-textSecondary text-xs" id="agenda-quarta-horario">—</span>
                         </div>
                     </div>
                     
                     <!-- Quinta -->
-                    <div class="agenda-row">
-                        <div class="agenda-day">Quinta-feira</div>
-                        <div class="agenda-details">
-                            <span class="agenda-location" id="agenda-quinta-local">Carregando...</span>
-                            <span class="agenda-time" id="agenda-quinta-horario">—</span>
+                    <div class="grid grid-cols-1 sm:grid-cols-12 items-center p-4 bg-bgSecondary border border-borderCustom hover:border-borderCustomActive transition-colors duration-300">
+                        <div class="sm:col-span-4 font-accent text-xs uppercase tracking-widest text-textPrimary mb-2 sm:mb-0">Quinta-feira</div>
+                        <div class="sm:col-span-8 flex justify-between items-center gap-4">
+                            <span class="font-normal text-accent text-sm md:text-base" id="agenda-quinta-local">Carregando...</span>
+                            <span class="text-textSecondary text-xs" id="agenda-quinta-horario">—</span>
                         </div>
                     </div>
                     
                     <!-- Sexta -->
-                    <div class="agenda-row">
-                        <div class="agenda-day">Sexta-feira</div>
-                        <div class="agenda-details">
-                            <span class="agenda-location" id="agenda-sexta-local">Carregando...</span>
-                            <span class="agenda-time" id="agenda-sexta-horario">—</span>
+                    <div class="grid grid-cols-1 sm:grid-cols-12 items-center p-4 bg-bgSecondary border border-borderCustom hover:border-borderCustomActive transition-colors duration-300">
+                        <div class="sm:col-span-4 font-accent text-xs uppercase tracking-widest text-textPrimary mb-2 sm:mb-0">Sexta-feira</div>
+                        <div class="sm:col-span-8 flex justify-between items-center gap-4">
+                            <span class="font-normal text-accent text-sm md:text-base" id="agenda-sexta-local">Carregando...</span>
+                            <span class="text-textSecondary text-xs" id="agenda-sexta-horario">—</span>
                         </div>
                     </div>
                     
                     <!-- Sábado -->
-                    <div class="agenda-row">
-                        <div class="agenda-day">Sábado</div>
-                        <div class="agenda-details">
-                            <span class="agenda-location" id="agenda-sabado-local">Carregando...</span>
-                            <span class="agenda-time" id="agenda-sabado-horario">—</span>
+                    <div class="grid grid-cols-1 sm:grid-cols-12 items-center p-4 bg-bgSecondary border border-borderCustom hover:border-borderCustomActive transition-colors duration-300">
+                        <div class="sm:col-span-4 font-accent text-xs uppercase tracking-widest text-textPrimary mb-2 sm:mb-0">Sábado</div>
+                        <div class="sm:col-span-8 flex justify-between items-center gap-4">
+                            <span class="font-normal text-accent text-sm md:text-base" id="agenda-sabado-local">Carregando...</span>
+                            <span class="text-textSecondary text-xs" id="agenda-sabado-horario">—</span>
                         </div>
                     </div>
                     
                     <!-- Domingo -->
-                    <div class="agenda-row">
-                        <div class="agenda-day">Domingo</div>
-                        <div class="agenda-details">
-                            <span class="agenda-location" id="agenda-domingo-local">Carregando...</span>
-                            <span class="agenda-time" id="agenda-domingo-horario">—</span>
+                    <div class="grid grid-cols-1 sm:grid-cols-12 items-center p-4 bg-bgSecondary border border-borderCustom hover:border-borderCustomActive transition-colors duration-300">
+                        <div class="sm:col-span-4 font-accent text-xs uppercase tracking-widest text-textPrimary mb-2 sm:mb-0">Domingo</div>
+                        <div class="sm:col-span-8 flex justify-between items-center gap-4">
+                            <span class="font-normal text-accent text-sm md:text-base" id="agenda-domingo-local">Carregando...</span>
+                            <span class="text-textSecondary text-xs" id="agenda-domingo-horario">—</span>
                         </div>
                     </div>
                 </div>
@@ -200,57 +296,117 @@
         </section>
 
         <!-- Galeria / Retratos de Transformação -->
-        <section class="galeria section-container fade-in-section" id="retratos">
-            <div class="section-header">
-                <span class="font-accent-tag">Retratos Editoriais</span>
-                <h2>Galeria de <span class="text-accent">Transformações</span></h2>
-            </div>
-            
-            <div class="portfolio-grid">
-                <!-- Item 1 -->
-                <div class="portfolio-item">
-                    <img src="images/port-1.png" alt="Geometria capilar masculina sob medida" class="portfolio-img" loading="lazy">
-                    <div class="portfolio-overlay">
-                        <span class="portfolio-title">Design de Corte</span>
-                        <h4 class="portfolio-desc">Corte Masculino Geométrico</h4>
-                    </div>
+        <section class="galeria bg-bgSecondary border-y border-borderCustom" id="retratos">
+            <div class="max-w-[1200px] mx-auto px-6 py-24 md:py-32 fade-in-section">
+                <div class="max-w-[600px] mb-16">
+                    <span class="font-accent text-xs tracking-[0.2em] text-accent uppercase mb-2 block">Retratos Editoriais</span>
+                    <h2 class="font-display text-4xl md:text-5xl leading-tight">Galeria de <span class="text-accent italic font-normal">Transformações</span></h2>
                 </div>
-
-                <!-- Item 2 -->
-                <div class="portfolio-item">
-                    <img src="images/port-2.png" alt="Colorimetria e iluminado premium unissex" class="portfolio-img" loading="lazy">
-                    <div class="portfolio-overlay">
-                        <span class="portfolio-title">Colorimetria</span>
-                        <h4 class="portfolio-desc">Champagne & Caramel Highlights</h4>
+                
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+                    <!-- Item 1 -->
+                    <div class="relative overflow-hidden aspect-square border border-borderCustom group cursor-pointer">
+                        <img src="images/port-1.png" alt="Geometric haircut styled by Marcelo Magnoni" class="portfolio-img w-full h-full object-cover filter brightness-[0.8] contrast-[1.05] transition-transform duration-700 ease-out group-hover:scale-105 group-hover:brightness-95" loading="lazy">
+                        <div class="absolute inset-x-0 bottom-0 p-6 bg-gradient-to-t from-bgPrimary via-bgPrimary/60 to-transparent translate-y-4 opacity-0 group-hover:translate-y-0 group-hover:opacity-100 transition-all duration-500 ease-out">
+                            <span class="font-accent text-[9px] uppercase tracking-[0.15em] text-accent block mb-1">Design de Corte</span>
+                            <h4 class="font-display text-2xl text-textPrimary leading-tight">Corte Masculino Geométrico</h4>
+                        </div>
                     </div>
-                </div>
 
-                <!-- Item 3 -->
-                <div class="portfolio-item">
-                    <img src="images/port-3.png" alt="Corte Bob geométrico feminino" class="portfolio-img" loading="lazy">
-                    <div class="portfolio-overlay">
-                        <span class="portfolio-title">Design de Forma</span>
-                        <h4 class="portfolio-desc">Corte Bob Feminino Clássico</h4>
+                    <!-- Item 2 -->
+                    <div class="relative overflow-hidden aspect-square border border-borderCustom group cursor-pointer">
+                        <img src="images/port-2.png" alt="Color transformation highlighting by Marcelo Magnoni" class="portfolio-img w-full h-full object-cover filter brightness-[0.8] contrast-[1.05] transition-transform duration-700 ease-out group-hover:scale-105 group-hover:brightness-95" loading="lazy">
+                        <div class="absolute inset-x-0 bottom-0 p-6 bg-gradient-to-t from-bgPrimary via-bgPrimary/60 to-transparent translate-y-4 opacity-0 group-hover:translate-y-0 group-hover:opacity-100 transition-all duration-500 ease-out">
+                            <span class="font-accent text-[9px] uppercase tracking-[0.15em] text-accent block mb-1">Colorimetria</span>
+                            <h4 class="font-display text-2xl text-textPrimary leading-tight">Champagne Highlights</h4>
+                        </div>
+                    </div>
+
+                    <!-- Item 3 -->
+                    <div class="relative overflow-hidden aspect-square border border-borderCustom group cursor-pointer">
+                        <img src="images/port-3.png" alt="Female geometric bob cut by Marcelo Magnoni" class="portfolio-img w-full h-full object-cover filter brightness-[0.8] contrast-[1.05] transition-transform duration-700 ease-out group-hover:scale-105 group-hover:brightness-95" loading="lazy">
+                        <div class="absolute inset-x-0 bottom-0 p-6 bg-gradient-to-t from-bgPrimary via-bgPrimary/60 to-transparent translate-y-4 opacity-0 group-hover:translate-y-0 group-hover:opacity-100 transition-all duration-500 ease-out">
+                            <span class="font-accent text-[9px] uppercase tracking-[0.15em] text-accent block mb-1">Design de Forma</span>
+                            <h4 class="font-display text-2xl text-textPrimary leading-tight">Corte Bob Geométrico</h4>
+                        </div>
                     </div>
                 </div>
             </div>
         </section>
 
-        <!-- Agendamento / CTA Final -->
-        <section class="reserva section-container fade-in-section" id="reserva">
-            <div class="reserva-grid">
-                <div class="reserva-image-container">
-                    <img src="images/profile.png" alt="Marcelo Magnoni em estúdio de visagismo" class="reserva-img" loading="lazy">
-                </div>
-                <div class="reserva-content">
-                    <span class="font-accent-tag">Reserva de Experiência</span>
-                    <h2 class="reserva-title">Desenhe a sua nova <span class="text-accent">assinatura visual</span>.</h2>
-                    <p class="reserva-desc">
-                        Cada atendimento é privado, individual e focado nas particularidades do seu rosto e estilo pessoal. Dê o primeiro passo para alinhar sua imagem com sua essência.
+        <!-- Perguntas Frequentes (FAQ Acordeão, Nova Seção) -->
+        <section class="max-w-[800px] mx-auto px-6 py-24 md:py-32" id="perguntas">
+            <div class="text-center mb-16 fade-in-section">
+                <span class="font-accent text-xs tracking-[0.2em] text-accent uppercase mb-2 block">Dúvidas Frequentes</span>
+                <h2 class="font-display text-4xl md:text-5xl leading-tight">Perguntas <span class="text-accent italic font-normal">Frequentes</span></h2>
+            </div>
+
+            <div class="flex flex-col gap-4 fade-in-section">
+                <!-- FAQ 1 -->
+                <details class="bg-bgSecondary border border-borderCustom p-5 group transition-colors duration-300 [&_summary::-webkit-details-marker]:hidden">
+                    <summary class="flex justify-between items-center font-display text-xl md:text-2xl text-textPrimary cursor-pointer list-none select-none">
+                        <span>O que é o Visagismo Científico?</span>
+                        <span class="text-accent font-accent text-xl transition-transform duration-300 group-open:rotate-45">+</span>
+                    </summary>
+                    <p class="mt-4 text-textSecondary text-sm md:text-base font-light leading-relaxed border-t border-borderCustom/50 pt-4">
+                        É a análise detalhada das proporções físicas do seu rosto (geometria facial, tom de pele) combinada com seus objetivos profissionais e traços de temperamento. A partir disso, Marcelo projeta um design capilar e facial que expressa visualmente a sua melhor identidade.
                     </p>
-                    <a href="https://wa.me/5521996600403?text=Olá%20Marcelo,%20gostaria%20de%20agendar%20uma%20consultoria%20visual." target="_blank" rel="noopener" class="btn-primary" id="cta-final-agendamento-whatsapp">
-                        Falar Diretamente no WhatsApp
-                    </a>
+                </details>
+
+                <!-- FAQ 2 -->
+                <details class="bg-bgSecondary border border-borderCustom p-5 group transition-colors duration-300 [&_summary::-webkit-details-marker]:hidden">
+                    <summary class="flex justify-between items-center font-display text-xl md:text-2xl text-textPrimary cursor-pointer list-none select-none">
+                        <span>Como agendar uma sessão com Marcelo?</span>
+                        <span class="text-accent font-accent text-xl transition-transform duration-300 group-open:rotate-45">+</span>
+                    </summary>
+                    <p class="mt-4 text-textSecondary text-sm md:text-base font-light leading-relaxed border-t border-borderCustom/50 pt-4">
+                        Os agendamentos são feitos de forma restrita e exclusiva via WhatsApp corporativo. Isso nos permite planejar o atendimento de forma individual e privada, sem salas de espera cheias.
+                    </p>
+                </details>
+
+                <!-- FAQ 3 -->
+                <details class="bg-bgSecondary border border-borderCustom p-5 group transition-colors duration-300 [&_summary::-webkit-details-marker]:hidden">
+                    <summary class="flex justify-between items-center font-display text-xl md:text-2xl text-textPrimary cursor-pointer list-none select-none">
+                        <span>O estúdio atende homens e mulheres?</span>
+                        <span class="text-accent font-accent text-xl transition-transform duration-300 group-open:rotate-45">+</span>
+                    </summary>
+                    <p class="mt-4 text-textSecondary text-sm md:text-base font-light leading-relaxed border-t border-borderCustom/50 pt-4">
+                        Sim, o estúdio é unissex. O foco principal está no design de imagem, visagismo e saúde da fibra capilar de alta performance para qualquer pessoa que busca um atendimento altamente técnico e personalizado.
+                    </p>
+                </details>
+
+                <!-- FAQ 4 -->
+                <details class="bg-bgSecondary border border-borderCustom p-5 group transition-colors duration-300 [&_summary::-webkit-details-marker]:hidden">
+                    <summary class="flex justify-between items-center font-display text-xl md:text-2xl text-textPrimary cursor-pointer list-none select-none">
+                        <span>Qual a duração das sessões?</span>
+                        <span class="text-accent font-accent text-xl transition-transform duration-300 group-open:rotate-45">+</span>
+                    </summary>
+                    <p class="mt-4 text-textSecondary text-sm md:text-base font-light leading-relaxed border-t border-borderCustom/50 pt-4">
+                        Uma sessão de Corte & Visagismo dura em média 60 minutos. Tratamentos térmicos e colorimetria avançada possuem duração variável de acordo com o diagnóstico capilar inicial.
+                    </p>
+                </details>
+            </div>
+        </section>
+
+        <!-- Agendamento / CTA Final -->
+        <section class="reserva bg-bgSecondary border-t border-borderCustom" id="reserva">
+            <div class="max-w-[1200px] mx-auto px-6 py-24 md:py-32 fade-in-section">
+                <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-24 items-center">
+                    <div class="border border-borderCustom overflow-hidden relative aspect-[4/3] max-w-[500px] mx-auto lg:mx-0 w-full">
+                        <img src="images/profile.png" alt="Marcelo Magnoni em estúdio" class="reserva-img w-full h-full object-cover filter brightness-[0.8] contrast-[1.02]" loading="lazy">
+                    </div>
+                    <div class="flex flex-col gap-6 text-center lg:text-left">
+                        <span class="font-accent text-xs tracking-[0.2em] text-accent uppercase mb-2 block">Reserva de Experiência</span>
+                        <h2 class="font-display text-4xl md:text-5xl leading-tight text-textPrimary">Desenhe a sua nova <span class="text-accent italic font-normal">assinatura visual</span>.</h2>
+                        <p class="text-textSecondary text-base font-light leading-relaxed max-w-[500px] mx-auto lg:mx-0">
+                            Cada atendimento é privado, individual e focado nas particularidades do seu rosto e estilo pessoal. Dê o primeiro passo para alinhar sua imagem com sua essência.
+                        </p>
+                        <div class="mt-4">
+                            <a href="https://wa.me/5521996600403?text=Olá%20Marcelo,%20gostaria%20de%20agendar%20uma%20consultoria%20visual." target="_blank" rel="noopener" class="inline-flex items-center justify-center border border-accent text-textPrimary px-8 py-4 uppercase font-accent text-[11px] tracking-[0.15em] transition-all duration-500 hover:bg-accent hover:text-bgPrimary">
+                                Falar Diretamente no WhatsApp
+                            </a>
+                        </div>
+                    </div>
                 </div>
             </div>
         </section>
@@ -258,17 +414,24 @@
     </main>
 
     <!-- Footer -->
-    <footer>
-        <div class="footer-container">
-            <div class="logo">
-                M. MAGNONI
-                <span class="logo-sub" style="font-size: 0.5rem;">© 2026 Marcelo Magnoni. Todos os direitos reservados.</span>
+    <footer class="bg-bgPrimary border-t border-borderCustom py-12 px-6">
+        <div class="max-w-[1200px] mx-auto flex flex-col md:flex-row justify-between items-center gap-6">
+            <div class="logo flex flex-col items-center md:items-start">
+                <span class="font-display text-xl tracking-wider text-textPrimary">M. MAGNONI</span>
+                <span class="text-[9px] uppercase tracking-[0.35em] text-textMuted mt-1">© 2026 Marcelo Magnoni. Todos os direitos reservados.</span>
             </div>
             <div>
-                <a href="admin.html" class="admin-link" id="footer-admin-login-link">Área do Profissional</a>
+                <a href="admin.html" class="font-accent text-[10px] uppercase tracking-[0.15em] text-textMuted hover:text-accent transition-colors duration-300">Área do Profissional</a>
             </div>
         </div>
     </footer>
+
+    <!-- Botão de Agendamento Flutuante -->
+    <a href="https://wa.me/5521996600403?text=Olá%20Marcelo,%20gostaria%20de%20agendar%20uma%20consultoria%20visual." target="_blank" rel="noopener" class="fixed bottom-6 right-6 z-50 flex items-center justify-center bg-accent text-bgPrimary p-4 rounded-full shadow-[0_4px_20px_rgba(212,196,174,0.4)] hover:bg-accentHover hover:scale-105 transition-all duration-300 animate-pulse-ring" aria-label="Agendar via WhatsApp">
+        <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+            <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L0 24l6.335-1.662c1.746.953 3.71 1.458 5.704 1.46h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/>
+        </svg>
+    </a>
 
     <!-- App Script -->
     <script type="module" src="js/app.js"></script>
